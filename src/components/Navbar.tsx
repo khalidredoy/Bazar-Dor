@@ -10,9 +10,7 @@ export default function Navbar() {
   return (
     <header className="border-b bg-base-100">
       <div className="mx-auto max-w-6xl px-4">
-        {/* Top Navbar */}
         <div className="navbar px-0">
-          {/* Logo */}
           <div className="flex-1">
             <div>
               <div className="text-xl font-bold text-success">🛒 বাজার দর</div>
@@ -21,7 +19,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Auth */}
           <div className="flex gap-2">
             <button className="btn btn-ghost btn-sm">সাইন ইন</button>
 
@@ -31,7 +28,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Category */}
         <nav className="flex gap-2 overflow-x-auto pb-3">
           {categories.map((category) => (
             <button
