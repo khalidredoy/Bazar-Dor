@@ -12,3 +12,11 @@ export type Product = {
     pct: number;
   };
 };
+
+
+markets: {
+  market: string;
+  division: string;
+  min: number;
+  max: number;
+}[];
