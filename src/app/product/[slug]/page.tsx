@@ -11,7 +11,7 @@ slug: string;
 
 async function getProduct(slug: string): Promise<Product | null> {
 const response = await fetch(
-"https://api.abcz.workers.dev/api/bazardor/products"
+"https://api.api-store.workers.dev/api/bazardor/products"
 );
 
 if (!response.ok) {

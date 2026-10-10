@@ -12,7 +12,7 @@ type CategoryPageProps = {
 
 async function getCategories(): Promise<Category[]> {
   const response = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories"
+    "https://api.api-store.workers.dev/api/bazardor/products"
   );
 
   if (!response.ok) {
@@ -26,7 +26,7 @@ async function getCategoryProducts(
   slug: string
 ): Promise<Product[]> {
   const response = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${slug}`
+    `https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`
   );
 
   if (!response.ok) {

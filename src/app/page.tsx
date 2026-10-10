@@ -5,15 +5,29 @@ import ProductCard from "@/components/ProductCard";
 import type { Product } from "@/types/product";
 
 async function getProducts(): Promise<Product[]> {
-  const response = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products",
-  );
+  try {
+    const response = await fetch(
+      "https://api.api-store.workers.dev/api/bazardor/products",
+      {
+        next: { revalidate: 300 },
+      }
+    );
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch products");
+    if (!response.ok) {
+      console.error(
+        "Products API error:",
+        response.status,
+        response.statusText
+      );
+
+      return [];
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return [];
   }
-
-  return response.json();
 }
 
 export default async function Home() {
