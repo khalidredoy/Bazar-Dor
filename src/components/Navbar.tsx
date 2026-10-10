@@ -39,48 +39,51 @@ export default function Navbar() {
     <header className="border-b border-base-200 bg-white">
       <div className="mx-auto max-w-6xl px-4">
         <div className="navbar min-h-20 px-0">
-          {/* Logo and Date */}
+          
           <div className="flex-1">
             <Link href="/" className="block">
-              <div className="text-xl font-bold text-success">
-                🛒 বাজার দর
-              </div>
+              <div className="text-xl font-bold text-success">🛒 বাজার দর</div>
               <TodayDate />
             </Link>
           </div>
 
-          {/* Authentication */}
+          
           <div className="flex items-center">
             {isPending ? (
               <span className="loading loading-spinner loading-sm text-success" />
             ) : session ? (
-              <div className="flex flex-col items-end gap-2">
-                <button
-                  onClick={handleSignOut}
-                  className="btn btn-error btn-sm text-white shadow-sm"
-                >
-                  সাইন আউট
-                </button>
+              <div className="flex flex-col items-end gap-1.5">
+                
+                <div className="flex items-center gap-2">
+                  <Link
+                    href="/profile"
+                    className="btn btn-outline btn-success btn-xs"
+                  >
+                    প্রোফাইল আপডেট
+                  </Link>
 
-                {/* User Name */}
-               <div className="flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-1.5 py-0.5">
-  <div className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-600 text-[10px] font-semibold text-white">
-    {(session.user.name || "K")
-      .charAt(0)
-      .toUpperCase()}
-  </div>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn btn-error btn-sm text-white shadow-sm"
+                  >
+                    সাইন আউট
+                  </button>
+                </div>
 
-  <span className="text-[10px] font-medium text-emerald-800">
-    {session.user.name || "Khalid"}
-  </span>
-</div>
+               
+                <div className="flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-1.5 py-0.5">
+                  <div className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-600 text-[10px] font-semibold text-white">
+                    {(session.user.name || "K").charAt(0).toUpperCase()}
+                  </div>
+
+                  <span className="text-[10px] font-medium text-emerald-800">
+                    {session.user.name || "Khalid"}
+                  </span>
+                </div>
               </div>
             ) : (
               <div className="flex gap-2">
-                <Link
-                  href="/signin"
-                  className="btn btn-ghost btn-sm"
-                >
+                <Link href="/signin" className="btn btn-ghost btn-sm">
                   সাইন ইন
                 </Link>
 
@@ -95,7 +98,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Category Navigation */}
+        
         <nav className="flex gap-2 overflow-x-auto pb-3">
           {categories.map((category) => (
             <Link
