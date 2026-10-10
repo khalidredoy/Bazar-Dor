@@ -10,30 +10,35 @@ type CategoryPageProps = {
   }>;
 };
 
+const API_BASE =
+  "https://openapi.programming-hero.com/api/bazardor";
+
 async function getCategories(): Promise<Category[]> {
-  const response = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products"
-  );
+  const response = await fetch(`${API_BASE}/categories`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch categories");
   }
 
-  return response.json();
+  const result = await response.json();
+
+  return Array.isArray(result) ? result : result.data ?? [];
 }
 
 async function getCategoryProducts(
   slug: string
 ): Promise<Product[]> {
   const response = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`
+    `${API_BASE}/products?category=${encodeURIComponent(slug)}`
   );
 
   if (!response.ok) {
     throw new Error("Failed to fetch category products");
   }
 
-  return response.json();
+  const result = await response.json();
+
+  return Array.isArray(result) ? result : result.data ?? [];
 }
 
 export default async function CategoryPage({
